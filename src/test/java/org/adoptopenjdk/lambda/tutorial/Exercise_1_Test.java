@@ -33,15 +33,9 @@ import org.junit.Test;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.adoptopenjdk.lambda.tutorial.exercise1.Color.BLACK;
-import static org.adoptopenjdk.lambda.tutorial.exercise1.Color.BLUE;
-import static org.adoptopenjdk.lambda.tutorial.exercise1.Color.GREEN;
-import static org.adoptopenjdk.lambda.tutorial.exercise1.Color.RED;
-import static org.adoptopenjdk.lambda.tutorial.exercise1.Color.YELLOW;
+import static org.adoptopenjdk.lambda.tutorial.exercise1.Color.*;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.equalTo;
-import static org.hamcrest.Matchers.everyItem;
-import static org.hamcrest.Matchers.hasSize;
+import static org.hamcrest.Matchers.*;
 
 /**
  * Exercise 1 - Internal vs External iteration.
@@ -64,43 +58,41 @@ import static org.hamcrest.Matchers.hasSize;
  * <p>
  * JDK 8, with lambdas and an updated Collections library, will allow "Internal" iteration. In this case, the collection
  * receives some code, and decides how to apply that to its elements. This has several benefits, including:
- *  - allowing the collection to decide how to handle executing given code, including opening the door to parallelism and laziness
- *  - leads to a style where operations can be pipelined, into a more fluent, readable style.
+ * - allowing the collection to decide how to handle executing given code, including opening the door to parallelism and laziness
+ * - leads to a style where operations can be pipelined, into a more fluent, readable style.
  * </p>
  * <p>
  * Internal iteration, using lambda expression syntax, turns the above for loop into:
  * <pre>
- * {@code 
+ * {@code
  * shapes.forEach(s -> s.setColor(RED))
  * }
  * </pre>
  * Where <code>s -> s.setColor(RED)</code> is a lambda expression, which is passed into forEach, and invoked inside forEach. Lambda
  * expressions have a type, called a "Functional Interface". In this case the lambda is of type Consumer. Consumer declares
- * a single method, <code>void accept(T t)</code>. This is all hidden by the Java compiler, and unless you extract the lambda 
+ * a single method, <code>void accept(T t)</code>. This is all hidden by the Java compiler, and unless you extract the lambda
  * to a variable, or write a method which accepts a lambda, you don't really need to know about it.
  * </p>
  * <p>
  * The tests below can be made to pass using for loops. Try to make them pass without using a for loop.
  * </p>
  * [0] http://cr.openjdk.java.net/~briangoetz/lambda/sotc3.html
- * 
+ *
+ * @author Graham Allan grundlefleck at gmail dot com
  * @see java.lang.Iterable#forEach
  * @see Shape
  * @see Shapes
  * @see Color
- *
- * @author Graham Allan grundlefleck at gmail dot com
  */
 @SuppressWarnings("unchecked")
 public class Exercise_1_Test {
 
     /**
      * Use forEach to change the color of every shape to RED.
-     *
+     * <p>
      * Change the 'method under test' to make the test pass.
      *
      * @see Shapes#colorAll(java.util.List, Color)
-     *
      * @see Iterable#forEach
      * @see Shape#setColor(Color)
      */
@@ -117,13 +109,12 @@ public class Exercise_1_Test {
 
     /**
      * Use forEach, with the given StringBuilder, to assemble a String which represents every Shape in the given list.
-     *
+     * <p>
      * Change the 'method under test' to make the test pass.
-     *
+     * <p>
      * The String should be a concatenation of each Shape's toString.
      *
      * @see Shapes#makeStringOfAllColors(java.util.List, StringBuilder)
-     *
      * @see Shape#toString()
      * @see StringBuilder#append(String)
      * @see Iterable#forEach
@@ -141,11 +132,10 @@ public class Exercise_1_Test {
 
     /**
      * Use forEach to change the color, and build a string showing the old colors of each shape.
-     *
+     * <p>
      * Try to perform both actions using a single call to forEach.
      *
      * @see Shapes#changeColorAndMakeStringOfOldColors
-     *
      * @see Shape#getColor()
      * @see Color#name()
      * @see StringBuilder#append(String)
