@@ -26,11 +26,7 @@ import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.Song;
 import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.StarRating;
 import org.adoptopenjdk.lambda.tutorial.exercise5.musicplayer.UserRatedMusicLibrary;
 
-import java.util.Arrays;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class UserRatedLocalFilesystemMusicLibrary implements UserRatedMusicLibrary {
 

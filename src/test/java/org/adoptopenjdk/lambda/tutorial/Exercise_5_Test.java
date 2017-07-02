@@ -43,7 +43,6 @@ import java.util.stream.Stream;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.contains;
-import static org.hamcrest.Matchers.containsInAnyOrder;
 import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.is;
 import static org.hamcrest.Matchers.not;
@@ -205,10 +204,9 @@ public class Exercise_5_Test {
             new Song("Eleanor Rigby", "The Beatles")
         );
 
-//        UNCOMMENT THE LINES BELOW
 //        Until the sortedByArtist method is added to MusicLibrary, there will be a compiler error.
-//        assertThat(library.sortedByArtist(), containsSongsBy("Bob Dylan", "Creedence Clearwater Revival",
-//                                                             "Paulo Nutini", "Sam Cooke", "The Beatles"));
+        assertThat(library.sortedByArtist(), containsSongsBy("Bob Dylan", "Creedence Clearwater Revival",
+                                                             "Paulo Nutini", "Sam Cooke", "The Beatles"));
         assertThat(MusicLibrary.class, HasConcreteMethod.called("sortedByArtist"));
         assertThat(LocalFilesystemMusicLibrary.class, not(HasConcreteMethod.called("sortedByArtist")));
     }

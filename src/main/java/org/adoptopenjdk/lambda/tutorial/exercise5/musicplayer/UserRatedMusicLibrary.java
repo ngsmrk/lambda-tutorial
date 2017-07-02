@@ -27,8 +27,14 @@ public interface UserRatedMusicLibrary extends MusicLibrary {
     StarRating userRatingOf(Song song);
 
     static class StarRatingConverter {
-        public Rating convert(StarRating starRating) {
+        public static Rating convert(StarRating starRating) {
             return new Rating(starRating.numberOfStars * 20);
         }
+    }
+
+
+    @Override
+    default Rating ratingOf(Song song) {
+        return StarRatingConverter.convert(userRatingOf(song));
     }
 }
